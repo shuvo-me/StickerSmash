@@ -4,10 +4,12 @@ import { StyleSheet } from "react-native";
 
 type ImageViewerProps = {
   imgSource: string;
+  selectedImage?: string;
 };
 
-const ImageViewer: FC<ImageViewerProps> = ({ imgSource }) => {
-  return <Image source={imgSource} style={styles.image} />;
+const ImageViewer: FC<ImageViewerProps> = ({ imgSource, selectedImage }) => {
+  const source = selectedImage ? { uri: selectedImage } : imgSource;
+  return <Image source={source} style={styles.image} />;
 };
 
 export default ImageViewer;
